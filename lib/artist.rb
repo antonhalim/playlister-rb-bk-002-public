@@ -11,10 +11,13 @@ class Artist
     @@artist << self
   end
 
-  def add_song song
+  def add_song(song)
     @songs << song
     @song = song
-    song.genre.artists << self if song.genre # genre is object
+    song.artist = self
+    if song.genre != [] 
+    song.genre.artists << self
+    end
   end
 
   def genres
